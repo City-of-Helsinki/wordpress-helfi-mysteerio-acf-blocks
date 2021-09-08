@@ -1,0 +1,59 @@
+
+.pilotessential{
+    display: grid;
+    background: #66C0BE;
+
+    z-index: 1;
+    padding: 2rem;
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    top: -50px;
+    position: relative;
+}
+.pilotessential__subtitle{
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+.pilotessential__paragraph{
+    font-size: 1.5625rem ;
+    line-height: 2rem;
+    max-width: 410px;
+}
+
+.pilotessential__tahot p,
+.pilotessential__teemat p{
+    margin-top: 0;
+}
+@media screen and (min-width:576px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media screen and (min-width:992px) {
+
+}
+
+@media screen and (min-width:1150px) {
+    .pilotessential__wrap{
+    }
+    .pilotessential{
+        top: -100px;
+        left: 45vw;
+        position: relative;
+        margin: 0;
+    }
+}
+@media screen and (min-width:1250px) {
+    .pilotessential__wrap{
+    }
+    .pilotessential{
+        top: -100px;
+        left: 50vw;
+        position: relative;
+        margin: 0;
+    }
+}
