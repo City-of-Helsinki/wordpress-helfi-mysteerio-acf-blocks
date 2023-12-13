@@ -2,7 +2,7 @@
 /**
  * Plugin name: Mysteerio ACF Blocks
  * Author: Mysteerio
- * Version: 1.1.0
+ * Version: 1.2.0
  */
 
  // Exit if accessed directly.
