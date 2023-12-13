@@ -1,15 +1,10 @@
 {
-  "name": "wphel/mysteerio-acf-blocks",
+  "name": "mysteerio/mysteerio-acf-blocks",
   "type": "wordpress-plugin",
-	"version": "master",
   "authors": [
     {
       "name": "Mysteerio",
       "email": "info@mysteerio.fi"
     }
-	],
-	"require": {
-    "wecodemore/wpstarter": "~2.0",
-    "johnpbloch/wordpress-core": ">5.0"
-  }
+  ]
 }
