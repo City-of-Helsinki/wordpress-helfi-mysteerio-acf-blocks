@@ -10,8 +10,33 @@ if ( !defined( 'ABSPATH' ) ) {
     exit;
 }
 
+add_action( 'enqueue_block_assets', 'mysteerio_block_assets' );
+function mysteerio_block_assets(): void {
+	$blocks = array(
+		'concepts',
+		'imgpara',
+		'iconlift',
+		'pilotessential',
+		'heroarrow',
+		'squares',
+		'resources',
+	);
+
+	$base_url = plugin_dir_url( __FILE__ );
+
+	foreach ( $blocks as $block ) {
+		wp_register_style(
+			'block-' . $block,
+			sprintf( '%scss/%s.css', $base_url, $block )
+		);
+	}
+}
+
 function carousel_register_acf_gutenberg_blocks() {
 	if ( function_exists( 'acf_register_block' ) ) {
+
+		add_filter( 'acf/blocks/default_block_version', fn() => 3 );
+
 		// Register the hero block.
 		acf_register_block(array(
 			'name'            => 'concepts',
@@ -22,8 +47,7 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'consepts', 'grid' ),
-            'enqueue_style'     => plugin_dir_url(__FILE__) . 'css/concepts.css',
-			'enqueue_script'    => plugins_url('js/concepts.js', __FILE__)
+			'enqueue_assets' => fn() => wp_enqueue_style( 'block-concepts' ),
 		));
 
 		acf_register_block(array(
@@ -35,8 +59,7 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'paragraph', 'image', 'column' ),
-            'enqueue_style'     => plugin_dir_url(__FILE__) . 'css/imgpara.css',
-			'enqueue_script'    => plugins_url('js/imgpara.js', __FILE__)
+			'enqueue_assets' => fn() => wp_enqueue_style( 'block-imgpara' ),
 		));
 
 		acf_register_block(array(
@@ -48,8 +71,7 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'icon', 'lift', 'column' ),
-            'enqueue_style'     => plugin_dir_url(__FILE__) . 'css/iconlift.css',
-			'enqueue_script'    => plugins_url('js/iconlift.js', __FILE__)
+			'enqueue_assets' => fn() => wp_enqueue_style( 'block-iconlift' ),
 		));
 
 		acf_register_block(array(
@@ -61,7 +83,7 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'icon', 'lift', 'column' ),
-            'enqueue_style'     => plugin_dir_url(__FILE__) . 'css/pilotessential.css'
+			'enqueue_assets' => fn() => wp_enqueue_style( 'block-pilotessential' ),
 		));
 
 		acf_register_block(array(
@@ -73,7 +95,7 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'hero', 'arrow', 'down' ),
-            'enqueue_style'     => plugin_dir_url(__FILE__) . 'css/heroarrow.css'
+			'enqueue_assets' => fn() => wp_enqueue_style( 'block-heroarrow' ),
 		));
 		acf_register_block(array(
 			'name'            => 'squares',
@@ -84,7 +106,7 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'hero', 'arrow', 'down' ),
-            'enqueue_style'     => plugin_dir_url(__FILE__) . 'css/squares.css'
+			'enqueue_assets' => fn() => wp_enqueue_style( 'block-squares' ),
 		));
 
 		acf_register_block(array(
@@ -96,8 +118,7 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'icon', 'lift', 'column' ),
-            'enqueue_style'     => plugin_dir_url(__FILE__) . 'css/resources.css',
-			'enqueue_script'    => plugins_url('js/resources.js', __FILE__)
+			'enqueue_assets' => fn() => wp_enqueue_style( 'block-resources' ),
 		));
 	}
 }
