@@ -25,7 +25,7 @@ function mysteerio_block_assets(): void {
 	$base_url = plugin_dir_url( __FILE__ );
 
 	foreach ( $blocks as $block ) {
-		wp_register_style(
+		wp_enqueue_style(
 			'block-' . $block,
 			sprintf( '%scss/%s.css', $base_url, $block )
 		);
@@ -47,7 +47,6 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'consepts', 'grid' ),
-			'enqueue_assets' => fn() => wp_enqueue_style( 'block-concepts' ),
 		));
 
 		acf_register_block(array(
@@ -59,7 +58,6 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'paragraph', 'image', 'column' ),
-			'enqueue_assets' => fn() => wp_enqueue_style( 'block-imgpara' ),
 		));
 
 		acf_register_block(array(
@@ -71,7 +69,6 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'icon', 'lift', 'column' ),
-			'enqueue_assets' => fn() => wp_enqueue_style( 'block-iconlift' ),
 		));
 
 		acf_register_block(array(
@@ -83,7 +80,6 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'icon', 'lift', 'column' ),
-			'enqueue_assets' => fn() => wp_enqueue_style( 'block-pilotessential' ),
 		));
 
 		acf_register_block(array(
@@ -95,7 +91,6 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'hero', 'arrow', 'down' ),
-			'enqueue_assets' => fn() => wp_enqueue_style( 'block-heroarrow' ),
 		));
 		acf_register_block(array(
 			'name'            => 'squares',
@@ -106,7 +101,6 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'hero', 'arrow', 'down' ),
-			'enqueue_assets' => fn() => wp_enqueue_style( 'block-squares' ),
 		));
 
 		acf_register_block(array(
@@ -118,7 +112,6 @@ function carousel_register_acf_gutenberg_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'preview',
             'keywords'        => array( 'icon', 'lift', 'column' ),
-			'enqueue_assets' => fn() => wp_enqueue_style( 'block-resources' ),
 		));
 	}
 }
